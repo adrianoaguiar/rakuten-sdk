@@ -171,7 +171,7 @@ class Produto extends Base
     /**
      * Variações do produto
      *
-     * @var SubProduto
+     * @var Detalhes
      */
     private $sub_produto;
 
@@ -183,6 +183,7 @@ class Produto extends Base
     {
         $this->tipo = 1;
         $this->sub_produto = new ArrayCollection();
+        $this->setIdentificador(1);
     }
 
     /**
@@ -255,7 +256,7 @@ class Produto extends Base
      */
     public function setDescricao($descricao)
     {
-        $this->descricao = $descricao;
+        $this->descricao = trim(preg_replace(array('/\t+/', '/\s{2,}/', '/\n+/'), '', $descricao));
 
         return $this;
     }
@@ -319,7 +320,7 @@ class Produto extends Base
      */
     public function getLimitarQuantidade()
     {
-        return $this->limitar_quantidade;
+        return (integer) $this->limitar_quantidade;
     }
 
     /**
@@ -331,7 +332,7 @@ class Produto extends Base
      */
     public function setLimitarQuantidade($limitar_quantidade)
     {
-        $this->limitar_quantidade = (int) $limitar_quantidade;
+        $this->limitar_quantidade = (integer) $limitar_quantidade;
 
         return $this;
     }
@@ -471,7 +472,7 @@ class Produto extends Base
      */
     public function getPrazoAdicional()
     {
-        return (int)$this->prazo_adicional;
+        return (integer) $this->prazo_adicional;
     }
 
     /**
@@ -483,7 +484,7 @@ class Produto extends Base
      */
     public function setPrazoAdicional($prazo_adicional)
     {
-        $this->prazo_adicional = (int)$prazo_adicional;
+        $this->prazo_adicional = (integer) $prazo_adicional;
 
         return $this;
     }
@@ -493,7 +494,7 @@ class Produto extends Base
      *
      * @return ArrayCollection
      */
-    public function getSubProduto()
+    public function getSubProdutos()
     {
         return $this->sub_produto;
     }
@@ -501,12 +502,13 @@ class Produto extends Base
     /**
      * Adicionar variação do produto
      *
-     * @param SubProduto
+     * @param Detalhes
      *
      * @return $this
      */
-    public function addSubProduto(SubProduto $subProduto)
+    public function addSubProduto(Detalhes $subProduto)
     {
+        $subProduto->setIdentificador(2);
         $this->sub_produto->add($subProduto);
 
         return $this;

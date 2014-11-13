@@ -279,14 +279,14 @@ class ProdutosTest extends TestCase
     public function testSubProduto()
     {
         $this->assertFalse($this->data->hasSubProduto());
-        $this->assertInstanceOf('\Doctrine\Common\Collections\ArrayCollection', $this->data->getSubProduto());
-        $this->assertEquals(0, $this->data->getSubProduto()->count());
+        $this->assertInstanceOf('\Doctrine\Common\Collections\ArrayCollection', $this->data->getSubProdutos());
+        $this->assertEquals(0, $this->data->getSubProdutos()->count());
 
         $subProduto = new \Rakuten\Dados\Produto\SubProduto();
         $this->data->addSubProduto($subProduto);
 
         $this->assertTrue($this->data->hasSubProduto());
-        $this->assertInstanceOf('\Doctrine\Common\Collections\ArrayCollection', $this->data->getSubProduto());
-        $this->assertEquals(1, $this->data->getSubProduto()->count());
+        $this->assertInstanceOf('\Doctrine\Common\Collections\ArrayCollection', $this->data->getSubProdutos());
+        $this->assertEquals(1, $this->data->getSubProdutos()->count());
     }
 }

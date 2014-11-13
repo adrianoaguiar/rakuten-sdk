@@ -216,7 +216,20 @@ class SubProdutoTest extends TestCase
         $this->assertEquals(12, $this->data->getIsbm());
 
         $this->data->setIsbm('a');
-        $this->assertEquals(0, $this->data->getIsbm());
+        $this->assertEquals('', $this->data->getIsbm());
+    }
+
+
+    public function testEan13()
+    {
+        $this->data->setEan13(1);
+        $this->assertEquals(1, $this->data->getEan13());
+
+        $this->data->setEan13('12');
+        $this->assertEquals(12, $this->data->getEan13());
+
+        $this->data->setEan13('a');
+        $this->assertEquals('', $this->data->getEan13());
     }
 
     public function testModelo()
@@ -242,16 +255,17 @@ class SubProdutoTest extends TestCase
     {
         $this->assertInstanceOf('\Doctrine\Common\Collections\ArrayCollection', $this->data->getVariacao());
 
-        $this->assertEquals(0, $this->data->getVariacao()->count());
+        $this->assertFalse($this->data->hasVariacao());
 
         $variacao = new \Rakuten\Dados\Produto\Variacao();
         $this->data->addVariacao($variacao);
 
         $this->assertEquals(1, $this->data->getVariacao()->count());
         $this->assertEquals($variacao, $this->data->getVariacao()->get(0));
+        $this->assertTrue($this->data->hasVariacao());
 
         $this->data->clearVariacao();
-        $this->assertEquals(0, $this->data->getVariacao()->count());
+        $this->assertFalse($this->data->hasVariacao());
     }
 
     public function testTipo()

@@ -80,13 +80,13 @@ class Dimensoes extends Base
      */
     public function getPeso()
     {
-        return $this->peso;
+        return (float) $this->peso;
     }
 
     /**
      * Peso do produto
      *
-     * @param [string|float $peso
+     * @param string|float $peso
      *
      * @return $this
      */
@@ -104,7 +104,7 @@ class Dimensoes extends Base
      */
     public function getAltura()
     {
-        return $this->altura;
+        return (integer) $this->altura;
     }
 
     /**
@@ -116,7 +116,7 @@ class Dimensoes extends Base
      */
     public function setAltura($altura)
     {
-        $this->altura = (int)$altura;
+        $this->altura = (integer) $altura;
 
         return $this;
     }
@@ -128,7 +128,7 @@ class Dimensoes extends Base
      */
     public function getLargura()
     {
-        return $this->largura;
+        return (integer) $this->largura;
     }
 
     /**
@@ -140,7 +140,7 @@ class Dimensoes extends Base
      */
     public function setLargura($largura)
     {
-        $this->largura = (int)$largura;
+        $this->largura = (integer) $largura;
 
         return $this;
     }
@@ -152,7 +152,7 @@ class Dimensoes extends Base
      */
     public function getProfundidade()
     {
-        return $this->profundidade;
+        return (integer) $this->profundidade;
     }
 
     /**
@@ -164,7 +164,7 @@ class Dimensoes extends Base
      */
     public function setProfundidade($profundidade)
     {
-        $this->profundidade = (int)$profundidade;
+        $this->profundidade = (integer) $profundidade;
 
         return $this;
     }
