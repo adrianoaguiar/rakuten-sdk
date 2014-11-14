@@ -10,7 +10,6 @@
         }
     ],
     "require": {
-        "touki/ftp": "~1.1.0",
         "symfony/filesystem": "~2.5.0",
         "doctrine/collections": "~1.2.0"
     },
